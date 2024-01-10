@@ -54,6 +54,11 @@ DS3231::DS3231 ()
 	Wire.begin ();
 }
 
+DS3231::DS3231 (int I2C_CLK, int I2C_SDA)
+{
+	Wire.begin (I2C_CLK, I2C_SDA);
+}
+
 void DS3231::UpdateData ()
 {
     I2C_SendDataToSlave (DS3231_ADDRESS, CTRL_REGISTER, 0x3C);      // Control register -> Convert temperature enabled (this bit has to be raised constantly), 8.192 kHz

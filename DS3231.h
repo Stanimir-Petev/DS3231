@@ -81,6 +81,7 @@ public:
 	int Century, Year, Month, Date, Day, Hours, Minutes, Seconds;
 	double Temp;
 	DS3231 ();
+	DS3231 (int I2C_CLK, int I2C_SDA);
 	void UpdateData ();
 	
 	void SetTime (int Hours, int Minutes, int Seconds);

@@ -1,6 +1,7 @@
 #include "DS3231.h"
 
 DS3231 RTC;
+//DS3231 RTC(22,12);  // use this constructor if you need specific pins for the I2C
 int Century=20;
 
 void setup()
@@ -26,14 +27,14 @@ void loop()
   if (RTC.CheckCentury())
   {
     Century++;
-    printf ("New century!\r\n");
+    Serial.printf ("New century!\r\n");
   }
 
   if (RTC.CheckAlarm1())
-    printf ("Alarm 1 triggered!\r\n");
+    Serial.printf ("Alarm 1 triggered!\r\n");
 
   if (RTC.CheckAlarm2())
-    printf ("Alarm 2 triggered!\r\n");
+    Serial.printf ("Alarm 2 triggered!\r\n");
 
   Serial.printf ("%2d/%2d/%2d (%s) %02d:%02d:%02d;  Temperature = ",
     (Century-1)*100+RTC.Year, RTC.Month, RTC.Date, DaysOfTheWeek[RTC.Day], RTC.Hours, RTC.Minutes, RTC.Seconds, RTC.Hours, RTC.Minutes);
